@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dolina Retreats</title>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FGMBDY796D"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-FGMBDY796D');
+    </script>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" href="assets/favicon.jpg" type="image/jpeg">
+    <link rel="apple-touch-icon" href="assets/favicon.jpg">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <meta property="og:image" content="assets/favicon.jpg" />
+    <meta property="og:title" content="Dolina Retreats" />
+    <meta property="og:description" content="Mussoorie, Uttarakhand" />
+    <link rel="stylesheet" href="css/modal-updates.css">
+</head>
+<body>
+    <div class="container">
+        <div class="hero-image">
+            <a href="https://www.instagram.com/dolinaretreat/" target="_blank" class="instagram-follow-btn">
+                <i class="fab fa-instagram"></i>
+                <span>Follow Dolina Retreats</span>
+            </a>
+            <img src="assets/heroimage.jpg" alt="Dolina Retreats" loading="eager">
+        </div>
+        <header>
+            <h1>Dolina Retreats</h1>
+            <p class="tagline">
+                Mussoorie, Uttarakhand
+            </p>
+            <p class="sub-tagline">
+                An offbeat limestone mountain valley homestay at 6,000ft, 45mins from Mussoorie and Dehradun.
+            </p>
+        </header>
+
+        <div class="quick-access-grid">
+            <div class="grid-item" id="nearby-btn">
+                <div class="icon-wrapper">
+                    <i class="fas fa-compass"></i>
+                </div>
+                <h3>Location</h3>
+            </div>
+            <div class="grid-item" id="reviews-btn">
+                <div class="icon-wrapper">
+                    <i class="fas fa-star"></i>
+                </div>
+                <h3>Reviews</h3>
+            </div>
+            <div class="grid-item" id="rules-btn">
+                <div class="icon-wrapper">
+                    <i class="fas fa-scroll"></i>
+                </div>
+                <h3>Wifi &<br>Rules</h3>
+            </div>
+            <div class="grid-item" id="emergency-btn">
+                <div class="icon-wrapper">
+                    <i class="fas fa-phone-volume"></i>
+                </div>
+                <h3>Emergency<br>Contact</h3>
+            </div>
+            
+            <div class="grid-item" id="specials-btn">
+                <div class="icon-wrapper">
+                    <i class="fas fa-gift"></i>
+                </div>
+                <h3>Nearby<br>Experiences</h3>
+            </div>
+            <div class="grid-item" id="book-now-btn">
+                <div class="icon-wrapper">
+                    <i class="fas fa-calendar-check"></i>
+                </div>
+                <h3>Book<br>Now</h3>
+            </div>
+        </div>
+
+        <section class="featured-sections">
+            <div class="feature-card" id="amenities-card">
+                <img src="assets/amenities.jpeg" alt="Amenities">
+                <div class="card-content">
+                    <h2>Amenities</h2>
+                    <p>Find what's inside</p>
+                </div>
+            </div>
+            <div class="feature-card" id="host-favorites">
+                <img src="assets/food.jpg" alt="Food">
+                <div class="card-content">
+                    <h2>Food</h2>
+                    <p>Dine and unwind</p>
+                </div>
+            </div>
+            <div class="feature-card" id="gallery-card">
+                <img src="assets/gallery.jpg" alt="Property Gallery">
+                <div class="card-content">
+                    <h2>Gallery</h2>
+                    <p>View property images</p>
+                </div>
+            </div>
+            <div class="feature-card" id="rooms-card">
+                <img src="assets/featured-room.jpeg" alt="Our Rooms">
+                <div class="card-content">
+                    <h2>Rooms</h2>
+                    <p>Your mountain retreat</p>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p class="quote">This house becomes more than bricks and mortar when it holds the laughter and memories of travelers like you.</p>
+            <div class="footer-buttons">
+                <button id="book-now-footer-btn">Book Now</button>
+                <button id="share-btn">Share property</button>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Modals -->
+    <div id="book-now-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Book Your Mountain Getaway</h2>
+            <div class="booking-options">
+                <a href="https://wa.me/919520949831" target="_blank" class="booking-link">
+                    <div class="booking-platform">
+                        <div class="platform-icon-wrapper">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <div class="booking-platform-content">
+                            <h3>Chat on WhatsApp</h3>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="https://live.ipms247.com/booking/book-rooms-dolinaretreat" target="_blank" class="booking-link">
+                    <div class="booking-platform">
+                        <div class="platform-icon-wrapper">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <div class="booking-platform-content">
+                            <h3>Book Online Now</h3>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div id="gallery-modal" class="modal">
+        <div class="modal-content modal-large">
+            <span class="close">&times;</span>
+            <h2>Property Gallery</h2>
+            
+            <!-- Gallery Filters -->
+            <div class="gallery-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <!-- Room Types -->
+                <button class="filter-btn" data-filter="chasing-snow-flakes">Chasing Snow Flakes</button>
+                <button class="filter-btn" data-filter="blossom-and-breezes">Blossom & Breezes</button>
+                <button class="filter-btn" data-filter="between-snow-and-stream">Between Snow & Stream</button>
+                <button class="filter-btn" data-filter="first-light">First Light</button>
+                <button class="filter-btn" data-filter="rivers-song">River's Song</button>
+                <button class="filter-btn" data-filter="mountains-heart">Mountain's Heart</button>
+                <button class="filter-btn" data-filter="snowbound-secrets">Snowbound Secrets</button>
+                <!-- Common Areas -->
+                <button class="filter-btn" data-filter="lounges">Lounges</button>
+                <button class="filter-btn" data-filter="dining">Dining</button>
+                <button class="filter-btn" data-filter="garden">Garden</button>
+                <button class="filter-btn" data-filter="views">Views</button>
+            </div>
+
+            <!-- Gallery Grid Container -->
+            <div class="gallery-container">
+                <!-- Chasing Snow Flakes -->
+                <div class="gallery-item" data-category="chasing-snow-flakes">
+                    <img src="assets/gallery/room types/1/1.1.jpeg" alt="Chasing Snow Flakes" loading="lazy">
+                </div>
+                <div class="gallery-item" data-category="chasing-snow-flakes">
+                    <img src="assets/gallery/room types/1/1.2.jpeg" alt="Chasing Snow Flakes" loading="lazy">
+                </div>
+
+                <!-- Blossom and Breezes -->
+                <div class="gallery-item" data-category="blossom-and-breezes">
+                    <img src="assets/gallery/room types/2/2.1.jpeg" alt="Blossom and Breezes" loading="lazy">
+                </div>
+                <div class="gallery-item" data-category="blossom-and-breezes">
+                    <img src="assets/gallery/room types/2/2.2.jpeg" alt="Blossom and Breezes" loading="lazy">
+                </div>
+
+                <!-- Between Snow and Stream -->
+                <div class="gallery-item" data-category="between-snow-and-stream">
+                    <img src="assets/gallery/room types/3/3.1.jpeg" alt="Between Snow and Stream" loading="lazy">
+                </div>
+                <div class="gallery-item" data-category="between-snow-and-stream">
+                    <img src="assets/gallery/room types/3/3.2.jpeg" alt="Between Snow and Stream" loading="lazy">
+                </div>
+                <div class="gallery-item" data-category="between-snow-and-stream">
+                    <img src="assets/gallery/room types/3/3.3.jpeg" alt="Between Snow and Stream" loading="lazy">
+                </div>
+
+                <!-- First Light -->
+                <div class="gallery-item" data-category="first-light">
+                    <img src="assets/gallery/room types/4/4.1.jpeg" alt="First Light" loading="lazy">
+                </div>
+                <div class="gallery-item" data-category="first-light">
+                    <img src="assets/gallery/room types/4/4.2.jpeg" alt="First Light" loading="lazy">
+                </div>
+
+                <!-- River's Song -->
+                <div class="gallery-item" data-category="rivers-song">
+                    <img src="assets/gallery/room types/5/5.1.jpeg" alt="River's Song" loading="lazy">
+                </div>
+                <div class="gallery-item" data-category="rivers-song">
+                    <img src="assets/gallery/room types/5/5.2.jpeg" alt="River's Song" loading="lazy">
+                </div>
+
+                <!-- Mountain's Heart -->
+                <div class="gallery-item" data-category="mountains-heart">
+                    <img src="assets/gallery/room types/6/6.1.jpeg" alt="The Mountain's Heart" loading="lazy">
+                </div>
+                <div class="gallery-item" data-category="mountains-heart">
+                    <img src="assets/gallery/room types/6/6.2.jpeg" alt="The Mountain's Heart" loading="lazy">
+                </div>
+                <div class="gallery-item" data-category="mountains-heart">
+                    <img src="assets/gallery/room types/6/6.3.jpeg" alt="The Mountain's Heart" loading="lazy">
+                </div>
+                <div class="gallery-item" data-category="mountains-heart">
+                    <img src="assets/gallery/room types/6/6.4.jpeg" alt="The Mountain's Heart" loading="lazy">
+                </div>
+
+                <!-- Snowbound Secrets -->
+                <div class="gallery-item" data-category="snowbound-secrets">
+                    <img src="assets/gallery/room types/7/7.1.jpeg" alt="Snowbound Secrets" loading="lazy">
+                </div>
+                <div class="gallery-item" data-category="snowbound-secrets">
+                    <img src="assets/gallery/room types/7/7.2.jpeg" alt="Snowbound Secrets" loading="lazy">
+                </div>
+
+                <!-- Add back the Lounges section -->
+                <div class="gallery-item" data-category="lounges">
+                    <img src="assets/gallery/lounges/1.jpeg" alt="Lounge Area" loading="lazy">
+                </div>
+                <div class="gallery-item" data-category="lounges">
+                    <img src="assets/gallery/lounges/2.jpeg" alt="Lounge Area" loading="lazy">
+                </div>
+                <div class="gallery-item" data-category="lounges">
+                    <img src="assets/gallery/lounges/3.jpeg" alt="Lounge Area" loading="lazy">
+                </div>
+                <div class="gallery-item" data-category="lounges">
+                    <img src="assets/gallery/lounges/4.jpeg" alt="Lounge Area" loading="lazy">
+                </div>
+
+                <!-- Add back the Dining section -->
+                <div class="gallery-item" data-category="dining">
+                    <img src="assets/gallery/dining/1.jpeg" alt="Dining Area" loading="lazy">
+                </div>
+                <div class="gallery-item" data-category="dining">
+                    <img src="assets/gallery/dining/2.jpeg" alt="Dining Area" loading="lazy">
+                </div>
+
+                <!-- Add back the Garden section -->
+                <div class="gallery-item" data-category="garden">
+                    <img src="assets/gallery/garden/1.jpeg" alt="Garden" loading="lazy">
+                </div>
+                <div class="gallery-item" data-category="garden">
+                    <img src="assets/gallery/garden/2.jpeg" alt="Garden" loading="lazy">
+                </div>
+                <div class="gallery-item" data-category="garden">
+                    <img src="assets/gallery/garden/3.jpeg" alt="Garden" loading="lazy">
+                </div>
+
+                <!-- Keep existing Views section -->
+                <div class="gallery-item" data-category="views">
+                    <img src="assets/gallery/views/1.jpg" alt="Property View" loading="lazy">
+                </div>
+                <div class="gallery-item" data-category="views">
+                    <img src="assets/gallery/views/2.jpeg" alt="Property View" loading="lazy">
+                </div>
+                <div class="gallery-item" data-category="views">
+                    <img src="assets/gallery/views/3.jpg" alt="Property View" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="nearby-modal" class="modal">
+        <div class="modal-content modal-large">
+            <span class="close">&times;</span>
+            <h2>Address</h2>
+            <div class="modal-sections">
+                <div class="modal-section">
+                    <div class="address-card">
+                        <div class="address-content">
+                            <h3>📍 Property Address</h3>
+                            <p>Dolina Retreats<br>Village Masrana, Near Woodstock School<br>Mussoorie, Uttarakhand</p>
+                            <a href="https://maps.app.goo.gl/FhYGvNuQnkXcpQjZ9" 
+                               target="_blank" 
+                               class="map-button">
+                                <i class="fas fa-map-marker-alt"></i> Open in Google Maps
+                            </a>
+                        </div>
+                        <div class="location-preview">
+                            <iframe 
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3437.8876960661387!2d78.03957607670525!3d30.443666074924775!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3908d04590e3a553%3A0x1634c0542a1bb518!2sThe%20Dolina%20Retreat!5e0!3m2!1sen!2sin!4v1710836983044!5m2!1sen!2sin"
+                                width="100%" 
+                                height="250" 
+                                style="border:0; border-radius: 12px;" 
+                                allowfullscreen="" 
+                                loading="lazy" 
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-section">
+                    <h3>🚗 How to Reach</h3>
+                    <ul class="transport-options">
+                        <li>
+                            <strong>From Dehradun:</strong> Take the Mussoorie Road and follow the route towards Woodstock School. The property is located near Village Masrana, approximately 45-60 minutes drive.
+                        </li>
+                        <li>
+                            <strong>From Mussoorie:</strong> Drive towards Woodstock School area and follow the signs to Village Masrana. The journey takes about 45-60 minutes.
+                        </li>
+                        <li>
+                            <strong>By Train:</strong> Dehradun Railway Station is the nearest railhead (approximately 25 km). You can take a taxi from there to reach the property.
+                        </li>
+                        <li>
+                            <strong>By Air:</strong> Jolly Grant Airport, Dehradun is the nearest airport (approximately 35 km). Taxis are readily available from the airport.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="emergency-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Emergency Contacts</h2>
+            <div class="modal-sections">
+                <div class="modal-section emergency">
+                    <div class="emergency-contacts">
+                        <div class="contact-item">
+                            <h4>Emergency Services</h4>
+                            <p>Police: 100</p>
+                            <p>Ambulance/Medical: 102, 108</p>
+                            <p>Fire: 101</p>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <h4>Disaster Management</h4>
+                            <p>Control Room: 0177-2929688, 2629439</p>
+                            <p>2629939, 2628940</p>
+                            <p>Helpline: 1070, 1077</p>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <h4>Other Helplines</h4>
+                            <p>Crime Stopper: 1090</p>
+                            <p>Women Helpline: 1091</p>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <h4>Property Contacts</h4>
+                            <p>Host Contact (WhatsApp/Call): +91 95209 49831</p>
+                        </div>
+
+                        <div class="contact-item">
+                            <span class="name">Rakesh (Property Driver)</span>
+                            <a href="tel:+917906826718" class="phone">
+                                <i class="fas fa-phone"></i>
+                                7906826718
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="rules-modal" class="modal">
+        <div class="modal-content modal-large">
+            <span class="close">&times;</span>
+            <h2>WiFi & House Rules</h2>
+
+            <!-- WiFi Section -->
+            <div class="rules-section wifi-section">
+                <h3><i class="fas fa-wifi"></i> WiFi Details</h3>
+                <div class="wifi-details">
+                    <div class="wifi-item">
+                        <span class="label">Network:</span>
+                        <span class="value">Thea Homes</span>
+                    </div>
+                    <div class="wifi-item">
+                        <span class="label">Password:</span>
+                        <span class="value">recker@1976</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- House Rules Section -->
+            <div class="rules-section">
+                <h3><i class="fas fa-scroll"></i> House Rules & Policies</h3>
+                
+                <div class="rules-list">
+                    <!-- Check-in & Check-out -->
+                    <div class="rule-category">
+                        <div class="rule-header">
+                            <i class="fas fa-clock"></i>
+                            <h4>Check-in & Check-out</h4>
+                        </div>
+                        <ul>
+                            <li>Check-in: 2:00 PM (No check-in after 6:00 PM)</li>
+                            <li>Check-out: 11:00 AM</li>
+                            <li>4x4 Isuzu shuttle service available between main-road/parking and property</li>
+                            <li>Last shuttle service at 6:00 PM</li>
+                            <li>Designated parking area available for all vehicles</li>
+                            <li>No guest vehicles allowed beyond parking area</li>
+                        </ul>
+                    </div>
+
+                    <!-- Meals -->
+                    <div class="rule-category">
+                        <div class="rule-header">
+                            <i class="fas fa-utensils"></i>
+                            <h4>Dining Hours</h4>
+                        </div>
+                        <ul>
+                            <li>Breakfast: 8:30 AM - 10:30 AM</li>
+                            <li>Lunch: Flexible timing based on activities</li>
+                            <li>Dinner: 8:30 PM - 10:00 PM</li>
+                            <li>Service hours: 8:00 AM - 10:00 PM</li>
+                            <li>Booked meals cannot be cancelled or refunded</li>
+                            <li>Snacks available as per menu</li>
+                        </ul>
+                    </div>
+
+                    <!-- Safety & Environment -->
+                    <div class="rule-category">
+                        <div class="rule-header">
+                            <i class="fas fa-shield-alt"></i>
+                            <h4>Safety & Environment</h4>
+                        </div>
+                        <ul>
+                            <li>No smoking inside cottages</li>
+                            <li>Extinguish bonfire embers with water before retiring</li>
+                            <li>Fire extinguishers provided in each cottage</li>
+                            <li>Keep heaters away from clothes and furniture</li>
+                            <li>Use garbage bins to maintain cleanliness</li>
+                            <li>Natural Alkaline spring water available in all cottages</li>
+                        </ul>
+                    </div>
+
+                    <!-- Amenities Usage -->
+                    <div class="rule-category">
+                        <div class="rule-header">
+                            <i class="fas fa-home"></i>
+                            <h4>Property Usage</h4>
+                        </div>
+                        <ul>
+                            <li>BYOB (No alcohol served on property)</li>
+                            <li>Electric kettle for water boiling only</li>
+                            <li>Microwave available for warming food</li>
+                            <li>No loud music allowed</li>
+                            <li>Children below 12 years stay free with ID proof</li>
+                            <li>Intercom available in all rooms</li>
+                        </ul>
+                    </div>
+
+                    <!-- Medical & Emergency -->
+                    <div class="rule-category">
+                        <div class="rule-header">
+                            <i class="fas fa-first-aid"></i>
+                            <h4>Medical & Emergency</h4>
+                        </div>
+                        <ul>
+                            <li>First aid kit and basic medicines available</li>
+                            <li>Emergency: Call 108 (15-20 min response time)</li>
+                            <li>Network signals available in all cottages</li>
+                            <li>Contact staff for medical assistance</li>
+                        </ul>
+                    </div>
+
+                    <!-- Pet Policy -->
+                    <div class="rule-category">
+                        <div class="rule-header">
+                            <i class="fas fa-paw"></i>
+                            <h4>Pet Policy</h4>
+                        </div>
+                        <ul>
+                            <li>Pet-friendly in Oak, Mistletoe & Refuge cottages only</li>
+                            <li>Advance notice required for pets</li>
+                            <li>Keep pets supervised, especially after sunset</li>
+                        </ul>
+                    </div>
+
+                    <!-- Policies -->
+                    <div class="rule-category">
+                        <div class="rule-header">
+                            <i class="fas fa-file-contract"></i>
+                            <h4>Booking Policies</h4>
+                        </div>
+                        <div class="policy-sections">
+                            <!-- Reservation Policy -->
+                            <div class="policy-item">
+                                <h5>Reservation Policy</h5>
+                                <p>Full payment required in advance to confirm booking for the entire stay period.</p>
+                            </div>
+
+                            <!-- Cancellation Policy -->
+                            <div class="policy-item">
+                                <h5>Cancellation Policy</h5>
+                                <ul>
+                                    <li>No refund for no-show or cancellations within 7 days of check-in</li>
+                                    <li>Cancellations before 7 days of check-in: No charges applicable</li>
+                                    <li>Special Note: No refunds for blackout dates bookings</li>
+                        </ul>
+                    </div>
+
+                            <!-- Child Policy -->
+                            <div class="policy-item">
+                                <h5>Child Policy</h5>
+                                <p>Children under 12 years stay free in parent's room (ID proof required)</p>
+                </div>
+
+                            <!-- Refund Policy -->
+                            <div class="policy-item">
+                                <h5>Refund Process</h5>
+                                <ul>
+                                    <li>Processing time: 7-10 working days</li>
+                                    <li>Mode: Online payment/cheque</li>
+                                    <li>Note: Bank transaction charges will be deducted</li>
+                                </ul>
+                            </div>
+
+                            <!-- Lost & Found -->
+                            <div class="policy-item">
+                                <h5>Lost & Found</h5>
+                                <ul>
+                                    <li>Property not responsible for lost/stolen/damaged belongings</li>
+                                    <li>Contact immediately for lost items assistance</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="specials-modal" class="modal">
+        <div class="modal-content modal-large">
+            <span class="close">&times;</span>
+            <h2>Local Experiences</h2>
+            <div class="attractions-grid">
+                <div class="attraction-card">
+                    <div class="attraction-image">
+                        <img src="assets/jogini.jpg" alt="Jogini Waterfalls">
+                    </div>
+                    <div class="attraction-content">
+                        <h4>Jogini Waterfalls</h4>
+                        <div class="distance">2.5 km away</div>
+                        <p>A mesmerizing cascade nestled in the Himalayan mountains, Jogini Falls offers a spiritual and natural retreat. The 20-minute trek through picturesque valleys leads to this magnificent waterfall, considered sacred by locals. Perfect for photography and meditation, the falls create a peaceful sanctuary surrounded by pristine nature.</p>
+                    </div>
+                </div>
+
+                <div class="attraction-card">
+                    <div class="attraction-image">
+                        <img src="assets/hot.png" alt="Hot Water Springs">
+                    </div>
+                    <div class="attraction-content">
+                        <h4>Hot Water Springs</h4>
+                        <div class="distance">2.5 km away</div>
+                        <p>Vashisht's natural hot water springs are renowned for their therapeutic properties. These ancient springs, housed in traditional stone temples, offer a unique blend of spiritual significance and natural healing. The mineral-rich waters are believed to cure various skin ailments and provide deep relaxation.</p>
+                    </div>
+                </div>
+
+                <div class="attraction-card">
+                    <div class="attraction-image">
+                        <img src="assets/hadimba.jpg" alt="Hadimba Temple">
+                    </div>
+                    <div class="attraction-content">
+                        <h4>Hadimba Temple</h4>
+                        <div class="distance">2.5 km away</div>
+                        <p>This ancient cave temple, dedicated to Goddess Hadimba, is a remarkable example of traditional hill architecture. Built in 1553, its pagoda-shaped roof and intricate wood carvings showcase local craftsmanship. Surrounded by cedar forests, this sacred site offers a glimpse into the region's rich cultural heritage.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="feedback-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Leave a Feedback</h2>
+            <form id="feedback-form">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea placeholder="Your Feedback" required></textarea>
+                <button type="submit">Submit Feedback</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="food-modal" class="modal">
+        <div class="modal-content modal-large">
+            <span class="close">&times;</span>
+            <h2>Dining Information</h2>
+
+            <!-- Download Menu Button -->
+            <a href="https://drive.google.com/file/d/1zwly-awF8rtsfT1w0aMa6TBHNURkVgFV/edit" target="_blank" class="menu-download-btn">
+                <i class="fas fa-utensils"></i>
+                <span>View Complete Menu Card</span>
+            </a>
+
+            <!-- Dining Information -->
+            <div class="dining-info">
+                <!-- Timings Section -->
+                <div class="info-section">
+                    <h3><i class="fas fa-clock"></i> Meal Timings</h3>
+                    <ul>
+                        <li>Breakfast: 8:30 AM - 10:30 AM</li>
+                        <li>Lunch: Flexible (depends on day activities/treks)</li>
+                        <li>Dinner: 8:30 PM - 10:00 PM</li>
+                        <li>Service Hours: 8:00 AM - 10:00 PM</li>
+                    </ul>
+                    <p class="important-note">* Meals once booked cannot be cancelled or refunded</p>
+                </div>
+
+                <!-- Water Information -->
+                <div class="info-section">
+                    <h3><i class="fas fa-tint"></i> Water Information</h3>
+                    <p>Dolina's natural Alkaline spring water is tested and tapped at the source deep inside the mountain. This Himalayan spring water is full of healthy minerals and is soft water.</p>
+                    <ul>
+                        <li>Complimentary spring water bottles available in all cottages</li>
+                        <li>Please conserve water as it's a precious resource</li>
+                    </ul>
+                </div>
+
+                <!-- Important Guidelines -->
+                <div class="info-section">
+                    <h3><i class="fas fa-exclamation-circle"></i> Important Guidelines</h3>
+                    <ul>
+                        <li>No alcohol is served or sold at the property (BYOB)</li>
+                        <li>Please use electric kettle only for boiling water</li>
+                        <li>Microwave usage limited to warming food and milk</li>
+                        <li>Utensils are not provided for pantry use</li>
+                        <li>Snacks can be purchased or ordered as per menu</li>
+                    </ul>
+                </div>
+
+                <!-- Contact Information -->
+                <div class="info-section">
+                    <h3><i class="fas fa-phone-alt"></i> Kitchen Staff Contact</h3>
+                    <div class="contact-grid">
+                        <div class="contact-item">
+                            <span class="name">Virender (Chef)</span>
+                            <a href="tel:+918191035031" class="phone">
+                                <i class="fas fa-phone"></i>
+                                8191035031
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="amenities-modal" class="modal">
+        <div class="modal-content modal-large">
+            <span class="close">&times;</span>
+            <h2>Property Layout & Amenities</h2>
+
+            <!-- Property Sections -->
+            <div class="property-sections">
+                <!-- Valley Side -->
+                <div class="property-section valley">
+                    <div class="section-header">
+                        <i class="fas fa-mountain"></i>
+                        <h3>Valley Side</h3>
+                    </div>
+                    <div class="section-content">
+                        <p>At the valley side of the property lies 3 cottages around a football field length Walnut orchard with a dining room.</p>
+                        
+                        <!-- Add Cottage Types -->
+                        <div class="cottage-types">
+                            <h4><i class="fas fa-home"></i> Valley Cottages</h4>
+                            <ul class="cottage-list">
+                                <li>
+                                    <span class="cottage-name">Treehouse</span>
+                                    <span class="cottage-detail">1 Bedroom with Jacuzzi</span>
+                                </li>
+                                <li>
+                                    <span class="cottage-name">Walnut Cottage</span>
+                                    <span class="cottage-detail">1 Bedroom</span>
+                                </li>
+                                <li>
+                                    <span class="cottage-name">Refuge Family Cottage</span>
+                                    <span class="cottage-detail">2 Bedrooms</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="activities-grid">
+                            <div class="activity-item">
+                                <i class="fas fa-hiking"></i>
+                                <span>Trekking</span>
+                            </div>
+                            <div class="activity-item">
+                                <i class="fas fa-bullseye"></i>
+                                <span>Archery</span>
+                            </div>
+                            <div class="activity-item">
+                                <i class="fas fa-table-tennis"></i>
+                                <span>Badminton</span>
+                            </div>
+                            <div class="activity-item">
+                                <i class="fas fa-child"></i>
+                                <span>Trampoline</span>
+                            </div>
+                            <div class="activity-item">
+                                <i class="fas fa-motorcycle"></i>
+                                <span>ATV Rides</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hilltop Side -->
+                <div class="property-section hilltop">
+                    <div class="section-header">
+                        <i class="fas fa-tree"></i>
+                        <h3>Hilltop Side</h3>
+                    </div>
+                    <div class="section-content">
+                        <p>Perched on a hilltop lie 2-bedroom pet-friendly cottages with stunning views of hills and forest.</p>
+                        
+                        <!-- Add Cottage Types -->
+                        <div class="cottage-types">
+                            <h4><i class="fas fa-home"></i> Hilltop Cottages</h4>
+                            <ul class="cottage-list">
+                                <li>
+                                    <span class="cottage-name">Oak Cottage</span>
+                                    <span class="cottage-detail">2 Bedrooms</span>
+                                </li>
+                                <li>
+                                    <span class="cottage-name">Mistletoe Cottage</span>
+                                    <span class="cottage-detail">2 Bedrooms</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="activities-grid">
+                            <div class="activity-item">
+                                <i class="fas fa-fire"></i>
+                                <span>Bonfire Area</span>
+                            </div>
+                            <div class="activity-item">
+                                <i class="fas fa-drumstick-bite"></i>
+                                <span>BBQ Space</span>
+                            </div>
+                            <div class="activity-item">
+                                <i class="fas fa-bullseye"></i>
+                                <span>Darts</span>
+                            </div>
+                            <div class="activity-item">
+                                <i class="fas fa-table-tennis"></i>
+                                <span>Mini Table-Tennis</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Common Amenities -->
+                <div class="property-section amenities">
+                    <div class="section-header">
+                        <i class="fas fa-concierge-bell"></i>
+                        <h3>All Cottages Include</h3>
+                    </div>
+                    <div class="amenities-grid">
+                        <div class="amenity-item">
+                            <i class="fas fa-wifi"></i>
+                            <span>Free WiFi</span>
+                        </div>
+                        <div class="amenity-item">
+                            <i class="fas fa-coffee"></i>
+                            <span>Complimentary Breakfast</span>
+                        </div>
+                        <div class="amenity-item">
+                            <i class="fas fa-wine-bottle"></i>
+                            <span>Mini-bar Fridge</span>
+                        </div>
+                        <div class="amenity-item">
+                            <i class="fas fa-phone"></i>
+                            <span>Intercoms</span>
+                        </div>
+                        <div class="amenity-item">
+                            <i class="fas fa-temperature-high"></i>
+                            <span>Room Heaters</span>
+                        </div>
+                        <div class="amenity-item">
+                            <i class="fas fa-parking"></i>
+                            <span>Free Parking</span>
+                        </div>
+                        <div class="amenity-item">
+                            <i class="fas fa-mug-hot"></i>
+                            <span>Tea Station</span>
+                        </div>
+                        <div class="amenity-item">
+                            <i class="fas fa-microwave"></i>
+                            <span>Microwave</span>
+                        </div>
+                        <div class="amenity-item">
+                            <i class="fas fa-bed"></i>
+                            <span>Electric Blanket</span>
+                        </div>
+                        <div class="amenity-item">
+                            <i class="fas fa-pump-soap"></i>
+                            <span>Toiletries</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
