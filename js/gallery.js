@@ -5,51 +5,60 @@ document.addEventListener('DOMContentLoaded', function() {
     loadingIndicator.innerHTML = '<div class="spinner"></div><p>Loading gallery...</p>';
     galleryGrid.appendChild(loadingIndicator);
 
-    // Define image paths with correct extensions and consistent casing
-    const cottages = {
+    // Image paths configuration
+    const imagePaths = {
+        'mistletoe': 'assets/gallery/rooms/mistletoe-cottage',
+        'oak': 'assets/gallery/rooms/oak-cottage',
+        'refuge': 'assets/gallery/rooms/refuge-family-cottage',
+        'treehouse': 'assets/gallery/rooms/tree-house',
+        'walnut': 'assets/gallery/rooms/walnut-cottage',
+        'property': 'assets/gallery/rooms/property'
+    };
+
+    // File extension mapping for each image
+    const fileExtensions = {
         'mistletoe': {
-            basePath: 'assets/gallery/rooms/Mistletoe Cottage',
-            images: [
-                '1.jpeg', '2.jpeg', '3.jpg', '4.jpg', '5.jpg',
-                '6.jpg', '7.jpeg', '8.jpg', '9.jpg', '10.jpg'
-            ]
+            total: 10,
+            jpeg: [1, 2, 7],  // These are .jpeg
+            jpg: [3, 4, 5, 6, 8, 9, 10]  // These are .jpg
         },
         'oak': {
-            basePath: 'assets/gallery/rooms/Oak Cottage',
-            images: ['1.jpg', '2.jpg', '3.jpg', '4.jpeg']
-        },
-        'refuge': {
-            basePath: 'assets/gallery/rooms/Refuge Family Cottage',
-            images: Array.from({length: 9}, (_, i) => `${i + 1}.jpg`)
-        },
-        'treehouse': {
-            basePath: 'assets/gallery/rooms/Treehouse',
-            images: Array.from({length: 10}, (_, i) => `${i + 1}.jpg`).map((name, i) => 
-                i === 7 ? '8.jpeg' : name
-            )
-        },
-        'walnut': {
-            basePath: 'assets/gallery/rooms/Walnut Cottage',
-            images: ['1.jpeg', ...Array.from({length: 7}, (_, i) => `${i + 2}.jpg`)]
+            total: 4,
+            jpeg: [4],  // These are .jpeg
+            jpg: [1, 2, 3]  // These are .jpg
         },
         'property': {
-            basePath: 'assets/gallery/rooms/Property',
-            images: Array.from({length: 5}, (_, i) => `${i + 1}.jpg`)
+            total: 5,
+            jpg: [1, 2, 3, 4, 5]  // All are .jpg
+        },
+        'refuge': {
+            total: 9,
+            jpg: [1, 2, 3, 4, 5, 6, 7, 8, 9]  // All are .jpg
+        },
+        'treehouse': {
+            total: 10,
+            jpeg: [8],  // This is .jpeg
+            jpg: [1, 2, 3, 4, 5, 6, 7, 9, 10]  // These are .jpg
+        },
+        'walnut': {
+            total: 8,
+            jpeg: [1],  // This is .jpeg
+            jpg: [2, 3, 4, 5, 6, 7, 8]  // These are .jpg
         }
     };
 
     // Create all gallery items
     const fragment = document.createDocumentFragment();
 
-    Object.entries(cottages).forEach(([category, {basePath, images}]) => {
-        images.forEach(imageName => {
+    Object.entries(imagePaths).forEach(([category, basePath]) => {
+        fileExtensions[category].jpeg.forEach(jpegIndex => {
+            const imageName = `${jpegIndex}.jpeg`;
             const item = document.createElement('div');
             item.className = 'gallery-item';
             item.dataset.category = category;
             item.style.display = category === 'treehouse' ? 'block' : 'none';
 
             const img = document.createElement('img');
-            const primaryPath = `${basePath}/${imageName}`;
             img.alt = `${category} view`;
             img.loading = 'lazy';
             img.decoding = 'async';
@@ -70,22 +79,82 @@ document.addEventListener('DOMContentLoaded', function() {
             const loadWithFallback = async () => {
                 try {
                     // Try the primary path first
-                    await tryLoadImage(primaryPath);
-                    img.src = primaryPath;
+                    await tryLoadImage(`${basePath}/${imageName}`);
+                    img.src = `${basePath}/${imageName}`;
                 } catch {
                     // If primary fails, try the alternate extension
-                    const ext = primaryPath.split('.').pop().toLowerCase();
+                    const ext = imageName.split('.').pop().toLowerCase();
                     const altExt = ext === 'jpg' ? 'jpeg' : 'jpg';
-                    const altPath = primaryPath.replace(`.${ext}`, `.${altExt}`);
+                    const altPath = imageName.replace(`.${ext}`, `.${altExt}`);
                     
                     try {
-                        await tryLoadImage(altPath);
-                        img.src = altPath;
+                        await tryLoadImage(`${basePath}/${altPath}`);
+                        img.src = `${basePath}/${altPath}`;
                     } catch {
                         // If both fail, use placeholder
                         img.src = 'assets/placeholder.jpg';
                         img.alt = 'Image not available';
-                        console.error(`Failed to load image: ${primaryPath}`);
+                        console.error(`Failed to load image: ${basePath}/${imageName}`);
+                    }
+                }
+            };
+
+            loadWithFallback();
+
+            // Add load event listener for fade-in effect
+            img.onload = () => {
+                img.classList.add('loaded');
+                item.classList.add('loaded');
+            };
+            
+            item.appendChild(img);
+            fragment.appendChild(item);
+        });
+
+        fileExtensions[category].jpg.forEach(jpgIndex => {
+            const imageName = `${jpgIndex}.jpg`;
+            const item = document.createElement('div');
+            item.className = 'gallery-item';
+            item.dataset.category = category;
+            item.style.display = category === 'treehouse' ? 'block' : 'none';
+
+            const img = document.createElement('img');
+            img.alt = `${category} view`;
+            img.loading = 'lazy';
+            img.decoding = 'async';
+            img.width = 300;
+            img.height = 200;
+
+            // Enhanced error handling for image loading
+            const tryLoadImage = (path) => {
+                return new Promise((resolve, reject) => {
+                    const tempImg = new Image();
+                    tempImg.onload = () => resolve(path);
+                    tempImg.onerror = () => reject();
+                    tempImg.src = path;
+                });
+            };
+
+            // Try loading with both extensions
+            const loadWithFallback = async () => {
+                try {
+                    // Try the primary path first
+                    await tryLoadImage(`${basePath}/${imageName}`);
+                    img.src = `${basePath}/${imageName}`;
+                } catch {
+                    // If primary fails, try the alternate extension
+                    const ext = imageName.split('.').pop().toLowerCase();
+                    const altExt = ext === 'jpg' ? 'jpeg' : 'jpg';
+                    const altPath = imageName.replace(`.${ext}`, `.${altExt}`);
+                    
+                    try {
+                        await tryLoadImage(`${basePath}/${altPath}`);
+                        img.src = `${basePath}/${altPath}`;
+                    } catch {
+                        // If both fail, use placeholder
+                        img.src = 'assets/placeholder.jpg';
+                        img.alt = 'Image not available';
+                        console.error(`Failed to load image: ${basePath}/${imageName}`);
                     }
                 }
             };
