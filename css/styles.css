@@ -1285,11 +1285,12 @@ body {
     border: 1px solid #eee;
     gap: 15px;
     width: 100%;
+    background: #f8f8f8;
 }
 
 .booking-platform:active {
     transform: scale(0.98);
-    background: #f8f8f8;
+    background: #f0f0f0;
 }
 
 .platform-icon-wrapper {
