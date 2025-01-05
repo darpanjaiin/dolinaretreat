@@ -82,8 +82,9 @@ h1 {
 
 .filter-btn-selected {
     background: #333;
-    color: white;
-    border-color: #333;
+    color: rgb(0, 0, 0);
+    border-color: #000000;
+    background-color: #aaaaaa;
 }
 
 /* Gallery Grid */

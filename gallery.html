@@ -79,6 +79,38 @@
                 'property': 'assets/gallery/Rooms/Property'
             };
 
+            // File extension mapping for each image
+            const fileExtensions = {
+                'mistletoe': {
+                    total: 10,
+                    jpeg: [1, 2, 7],  // These are .jpeg
+                    jpg: [3, 4, 5, 6, 8, 9, 10]  // These are .jpg
+                },
+                'oak': {
+                    total: 4,
+                    jpeg: [10],  // This is .jpeg
+                    jpg: [1, 2, 3]  // These are .jpg
+                },
+                'property': {
+                    total: 5,
+                    jpg: [1, 2, 3, 4, 5]  // All are .jpg
+                },
+                'refuge': {
+                    total: 9,
+                    jpg: [1, 2, 3, 4, 5, 6, 7, 8, 9]  // All are .jpg
+                },
+                'treehouse': {
+                    total: 10,
+                    jpeg: [8],  // This is .jpeg
+                    jpg: [1, 2, 3, 4, 5, 6, 7, 9, 10]  // These are .jpg
+                },
+                'walnut': {
+                    total: 8,
+                    jpeg: [1],  // This is .jpeg
+                    jpg: [2, 3, 4, 5, 6, 7, 8]  // These are .jpg
+                }
+            };
+
             // Function to create a loading spinner
             function createLoadingSpinner() {
                 const spinner = document.createElement('div');
@@ -91,18 +123,35 @@
             async function loadImagesForCategory(category) {
                 const basePath = imagePaths[category];
                 try {
-                    // In production, you would fetch this list from your server
-                    // For now, we'll use a static list of image numbers
-                    const imageCount = 10; // Adjust based on actual number of images
                     const images = [];
+                    const categoryConfig = fileExtensions[category];
                     
-                    for(let i = 1; i <= imageCount; i++) {
-                        const image = {
-                            path: `${basePath}/${i}.jpg`,
-                            alt: `${category.charAt(0).toUpperCase() + category.slice(1)} Image ${i}`
-                        };
-                        images.push(image);
+                    // Handle .jpeg files
+                    if (categoryConfig.jpeg) {
+                        categoryConfig.jpeg.forEach(num => {
+                            images.push({
+                                path: `${basePath}/${num}.jpeg`,
+                                alt: `${category.charAt(0).toUpperCase() + category.slice(1)} Image ${num}`
+                            });
+                        });
                     }
+                    
+                    // Handle .jpg files
+                    if (categoryConfig.jpg) {
+                        categoryConfig.jpg.forEach(num => {
+                            images.push({
+                                path: `${basePath}/${num}.jpg`,
+                                alt: `${category.charAt(0).toUpperCase() + category.slice(1)} Image ${num}`
+                            });
+                        });
+                    }
+                    
+                    // Sort images by number
+                    images.sort((a, b) => {
+                        const numA = parseInt(a.path.match(/(\d+)\.(jpg|jpeg)$/)[1]);
+                        const numB = parseInt(b.path.match(/(\d+)\.(jpg|jpeg)$/)[1]);
+                        return numA - numB;
+                    });
                     
                     return images;
                 } catch (error) {
