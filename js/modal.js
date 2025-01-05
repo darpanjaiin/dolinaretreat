@@ -1,10 +1,10 @@
 // Image paths configuration
 const imagePaths = {
-    'mistletoe': 'assets/gallery/rooms/mistletoe-cottage',
-    'oak': 'assets/gallery/rooms/oak-cottage',
-    'refuge': 'assets/gallery/rooms/refuge-family-cottage',
-    'treehouse': 'assets/gallery/rooms/tree-house',
-    'walnut': 'assets/gallery/rooms/walnut-cottage',
+    'mistletoe': 'assets/gallery/rooms/mistletoe',
+    'oak': 'assets/gallery/rooms/oak',
+    'refuge': 'assets/gallery/rooms/refuge',
+    'treehouse': 'assets/gallery/rooms/tree',
+    'walnut': 'assets/gallery/rooms/walnut',
     'property': 'assets/gallery/rooms/property'
 };
 
