@@ -2786,3 +2786,64 @@ body {
     background: #ffffff;
 }
 
+:root {
+    --primary-color: #000000;
+    --secondary-color: #000000;
+    --accent-color: #E74C3C;
+    --text-color: #000000;
+    --light-gray: #ECF0F1;
+    --system-font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-style: normal !important;
+}
+
+
+/* Update the gallery link styling */
+.gallery-link {
+    text-decoration: none;
+    color: black;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+}
+
+.feature-card .gallery-link h2,
+.feature-card .gallery-link p {
+    color: rgb(0, 0, 0);
+    margin: 0;
+}
+
+.feature-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 0;
+    height: auto;
+    transition: transform 0.2s ease;
+}
+
+.feature-card:active {
+    transform: scale(0.98);
+}
+
+.feature-card img {
+    width: 130px;
+    height: 85px;
+    border-radius: 16px;
+    object-fit: cover;
+}
+
+.card-content {
+    position: static;
+    padding: 4px 0;
+    background: none;
+    color: inherit;
+}
+
+

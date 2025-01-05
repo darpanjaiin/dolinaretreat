@@ -88,7 +88,7 @@
                 },
                 'oak': {
                     total: 4,
-                    jpeg: [10],  // This is .jpeg
+                    jpeg: [4],  // These are .jpeg
                     jpg: [1, 2, 3]  // These are .jpg
                 },
                 'property': {
@@ -117,6 +117,39 @@
                 spinner.className = 'loading-spinner';
                 spinner.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
                 return spinner;
+            }
+
+            // Function to create image element with lazy loading
+            function createImageElement(image) {
+                const imgContainer = document.createElement('div');
+                imgContainer.className = 'image-container';
+                
+                const img = document.createElement('img');
+                img.loading = 'lazy'; // Enable lazy loading
+                img.src = image.path;
+                img.alt = image.alt;
+                
+                // Add click event for lightbox
+                img.addEventListener('click', () => openLightbox(image));
+                
+                // Add error handling for images - try alternate extension if first one fails
+                img.onerror = function() {
+                    const currentExt = this.src.split('.').pop().toLowerCase();
+                    const newExt = currentExt === 'jpg' ? 'jpeg' : 'jpg';
+                    const newSrc = this.src.replace(`.${currentExt}`, `.${newExt}`);
+                    
+                    // Try the alternate extension
+                    this.src = newSrc;
+                    
+                    // If both extensions fail, show placeholder
+                    this.onerror = function() {
+                        this.src = 'assets/placeholder.jpg';
+                        this.alt = 'Image not available';
+                    };
+                };
+
+                imgContainer.appendChild(img);
+                return imgContainer;
             }
 
             // Function to load images for a category
@@ -158,29 +191,6 @@
                     console.error('Error loading images:', error);
                     return [];
                 }
-            }
-
-            // Function to create image element with lazy loading
-            function createImageElement(image) {
-                const imgContainer = document.createElement('div');
-                imgContainer.className = 'image-container';
-                
-                const img = document.createElement('img');
-                img.loading = 'lazy'; // Enable lazy loading
-                img.src = image.path;
-                img.alt = image.alt;
-                
-                // Add click event for lightbox
-                img.addEventListener('click', () => openLightbox(image));
-                
-                // Add error handling for images
-                img.onerror = function() {
-                    this.src = 'assets/placeholder.jpg'; // Add a placeholder image
-                    this.alt = 'Image not available';
-                };
-
-                imgContainer.appendChild(img);
-                return imgContainer;
             }
 
             // Function to open lightbox

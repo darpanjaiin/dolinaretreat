@@ -110,18 +110,18 @@
             </div>
             
             <div class="feature-card">
-                <img src="assets/gallery.webp" 
-                     alt="Property Gallery" 
-                     width="130" 
-                     height="85"
-                     loading="lazy"
-                     decoding="async">
-                <div class="card-content">
-                    <a href="gallery.html" class="gallery-link">
+                <a href="gallery.html" class="gallery-link" style="text-decoration: none; color: black; display: flex; align-items: center; gap: 16px; width: 100%;">
+                    <img src="assets/gallery.webp" 
+                         alt="Property Gallery" 
+                         width="130" 
+                         height="85"
+                         loading="lazy"
+                         decoding="async">
+                    <div class="card-content">
                         <h2>Gallery</h2>
                         <p>View property images</p>
-                    </a>
-                </div>
+                    </div>
+                </a>
             </div>
             
             <div class="feature-card" id="rooms-card">
@@ -178,142 +178,6 @@
         </div>
     </div>
 
-    <div id="gallery-modal" class="modal">
-        <div class="modal-content modal-large">
-            <span class="close">&times;</span>
-            <h2>Property Gallery</h2>
-            
-            <!-- Gallery Filters -->
-            <div class="gallery-filters">
-                <button class="filter-btn active" data-filter="all">All</button>
-                <!-- Room Types -->
-                <button class="filter-btn" data-filter="chasing-snow-flakes">Chasing Snow Flakes</button>
-                <button class="filter-btn" data-filter="blossom-and-breezes">Blossom & Breezes</button>
-                <button class="filter-btn" data-filter="between-snow-and-stream">Between Snow & Stream</button>
-                <button class="filter-btn" data-filter="first-light">First Light</button>
-                <button class="filter-btn" data-filter="rivers-song">River's Song</button>
-                <button class="filter-btn" data-filter="mountains-heart">Mountain's Heart</button>
-                <button class="filter-btn" data-filter="snowbound-secrets">Snowbound Secrets</button>
-                <!-- Common Areas -->
-                <button class="filter-btn" data-filter="lounges">Lounges</button>
-                <button class="filter-btn" data-filter="dining">Dining</button>
-                <button class="filter-btn" data-filter="garden">Garden</button>
-                <button class="filter-btn" data-filter="views">Views</button>
-            </div>
-
-            <!-- Gallery Grid Container -->
-            <div class="gallery-container">
-                <!-- Chasing Snow Flakes -->
-                <div class="gallery-item" data-category="chasing-snow-flakes">
-                    <img src="assets/gallery/room types/1/1.1.jpeg" alt="Chasing Snow Flakes" loading="lazy">
-                </div>
-                <div class="gallery-item" data-category="chasing-snow-flakes">
-                    <img src="assets/gallery/room types/1/1.2.jpeg" alt="Chasing Snow Flakes" loading="lazy">
-                </div>
-
-                <!-- Blossom and Breezes -->
-                <div class="gallery-item" data-category="blossom-and-breezes">
-                    <img src="assets/gallery/room types/2/2.1.jpeg" alt="Blossom and Breezes" loading="lazy">
-                </div>
-                <div class="gallery-item" data-category="blossom-and-breezes">
-                    <img src="assets/gallery/room types/2/2.2.jpeg" alt="Blossom and Breezes" loading="lazy">
-                </div>
-
-                <!-- Between Snow and Stream -->
-                <div class="gallery-item" data-category="between-snow-and-stream">
-                    <img src="assets/gallery/room types/3/3.1.jpeg" alt="Between Snow and Stream" loading="lazy">
-                </div>
-                <div class="gallery-item" data-category="between-snow-and-stream">
-                    <img src="assets/gallery/room types/3/3.2.jpeg" alt="Between Snow and Stream" loading="lazy">
-                </div>
-                <div class="gallery-item" data-category="between-snow-and-stream">
-                    <img src="assets/gallery/room types/3/3.3.jpeg" alt="Between Snow and Stream" loading="lazy">
-                </div>
-
-                <!-- First Light -->
-                <div class="gallery-item" data-category="first-light">
-                    <img src="assets/gallery/room types/4/4.1.jpeg" alt="First Light" loading="lazy">
-                </div>
-                <div class="gallery-item" data-category="first-light">
-                    <img src="assets/gallery/room types/4/4.2.jpeg" alt="First Light" loading="lazy">
-                </div>
-
-                <!-- River's Song -->
-                <div class="gallery-item" data-category="rivers-song">
-                    <img src="assets/gallery/room types/5/5.1.jpeg" alt="River's Song" loading="lazy">
-                </div>
-                <div class="gallery-item" data-category="rivers-song">
-                    <img src="assets/gallery/room types/5/5.2.jpeg" alt="River's Song" loading="lazy">
-                </div>
-
-                <!-- Mountain's Heart -->
-                <div class="gallery-item" data-category="mountains-heart">
-                    <img src="assets/gallery/room types/6/6.1.jpeg" alt="The Mountain's Heart" loading="lazy">
-                </div>
-                <div class="gallery-item" data-category="mountains-heart">
-                    <img src="assets/gallery/room types/6/6.2.jpeg" alt="The Mountain's Heart" loading="lazy">
-                </div>
-                <div class="gallery-item" data-category="mountains-heart">
-                    <img src="assets/gallery/room types/6/6.3.jpeg" alt="The Mountain's Heart" loading="lazy">
-                </div>
-                <div class="gallery-item" data-category="mountains-heart">
-                    <img src="assets/gallery/room types/6/6.4.jpeg" alt="The Mountain's Heart" loading="lazy">
-                </div>
-
-                <!-- Snowbound Secrets -->
-                <div class="gallery-item" data-category="snowbound-secrets">
-                    <img src="assets/gallery/room types/7/7.1.jpeg" alt="Snowbound Secrets" loading="lazy">
-                </div>
-                <div class="gallery-item" data-category="snowbound-secrets">
-                    <img src="assets/gallery/room types/7/7.2.jpeg" alt="Snowbound Secrets" loading="lazy">
-                </div>
-
-                <!-- Add back the Lounges section -->
-                <div class="gallery-item" data-category="lounges">
-                    <img src="assets/gallery/lounges/1.jpeg" alt="Lounge Area" loading="lazy">
-                </div>
-                <div class="gallery-item" data-category="lounges">
-                    <img src="assets/gallery/lounges/2.jpeg" alt="Lounge Area" loading="lazy">
-                </div>
-                <div class="gallery-item" data-category="lounges">
-                    <img src="assets/gallery/lounges/3.jpeg" alt="Lounge Area" loading="lazy">
-                </div>
-                <div class="gallery-item" data-category="lounges">
-                    <img src="assets/gallery/lounges/4.jpeg" alt="Lounge Area" loading="lazy">
-                </div>
-
-                <!-- Add back the Dining section -->
-                <div class="gallery-item" data-category="dining">
-                    <img src="assets/gallery/dining/1.jpeg" alt="Dining Area" loading="lazy">
-                </div>
-                <div class="gallery-item" data-category="dining">
-                    <img src="assets/gallery/dining/2.jpeg" alt="Dining Area" loading="lazy">
-                </div>
-
-                <!-- Add back the Garden section -->
-                <div class="gallery-item" data-category="garden">
-                    <img src="assets/gallery/garden/1.jpeg" alt="Garden" loading="lazy">
-                </div>
-                <div class="gallery-item" data-category="garden">
-                    <img src="assets/gallery/garden/2.jpeg" alt="Garden" loading="lazy">
-                </div>
-                <div class="gallery-item" data-category="garden">
-                    <img src="assets/gallery/garden/3.jpeg" alt="Garden" loading="lazy">
-                </div>
-
-                <!-- Keep existing Views section -->
-                <div class="gallery-item" data-category="views">
-                    <img src="assets/gallery/views/1.jpg" alt="Property View" loading="lazy">
-                </div>
-                <div class="gallery-item" data-category="views">
-                    <img src="assets/gallery/views/2.jpeg" alt="Property View" loading="lazy">
-                </div>
-                <div class="gallery-item" data-category="views">
-                    <img src="assets/gallery/views/3.jpg" alt="Property View" loading="lazy">
-                </div>
-            </div>
-        </div>
-    </div>
 
     <div id="nearby-modal" class="modal">
         <div class="modal-content modal-large">
@@ -584,7 +448,7 @@
     <div id="specials-modal" class="modal">
         <div class="modal-content modal-large">
             <span class="close">&times;</span>
-            <h2>Activities & Experiences</h2>
+            <h2>Experiences</h2>
 
             <!-- On-Property Activities -->
             <div class="activities-container">
