@@ -182,7 +182,30 @@ document.addEventListener('DOMContentLoaded', function() {
     if (galleryCard) {
         galleryCard.addEventListener('click', () => {
             setTimeout(initializeGallery, 100);
+            // Open gallery modal
+            const galleryModal = document.getElementById('gallery-modal');
+            if (galleryModal) {
+                galleryModal.style.display = 'block';
+            }
         });
+
+        // Close gallery modal
+        const galleryModal = document.getElementById('gallery-modal');
+        if (galleryModal) {
+            const galleryCloseBtn = galleryModal.querySelector('.close');
+            if (galleryCloseBtn) {
+                galleryCloseBtn.addEventListener('click', () => {
+                    galleryModal.style.display = 'none';
+                });
+            }
+
+            // Close gallery modal when clicking outside
+            window.addEventListener('click', (e) => {
+                if (e.target === galleryModal) {
+                    galleryModal.style.display = 'none';
+                }
+            });
+        }
     }
 
     // Gallery Filtering
