@@ -2755,3 +2755,34 @@ body {
 .feature-card .gallery-link p {
     color: rgb(0, 0, 0);
 }
+:root {
+    --primary-color: #000000;
+    --secondary-color: #000000;
+    --accent-color: #E74C3C;
+    --text-color: #000000;
+    --light-gray: #ECF0F1;
+    --system-font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-style: normal !important;
+}
+
+
+.feature-card img {
+    width: 130px;
+    height: 85px;
+    border-radius: 16px;
+    object-fit: cover;
+    loading: lazy;
+    image-rendering: auto;
+    decoding: async;
+}
+
+.feature-card {
+    background: #ffffff;
+}
+

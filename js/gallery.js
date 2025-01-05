@@ -5,94 +5,71 @@ document.addEventListener('DOMContentLoaded', function() {
     loadingIndicator.innerHTML = '<div class="spinner"></div><p>Loading gallery...</p>';
     galleryGrid.appendChild(loadingIndicator);
 
-    // Define the image configurations
+    // Define image paths with correct extensions
     const cottages = {
         'mistletoe': {
-            path: 'assets/gallery/rooms/Mistletoe Cottage',
-            total: 10,
-            jpegIndices: [1, 2, 7] // These are .jpeg, rest are .jpg
+            basePath: 'assets/gallery/rooms/Mistletoe Cottage',
+            images: [
+                '1.jpeg', '2.jpeg', '3.jpg', '4.jpg', '5.jpg',
+                '6.jpg', '7.jpeg', '8.jpg', '9.jpg', '10.jpg'
+            ]
         },
         'oak': {
-            path: 'assets/gallery/rooms/Oak Cottage',
-            total: 4,
-            jpegIndices: [4] // Only 10 is .jpeg, rest are .jpg
+            basePath: 'assets/gallery/rooms/Oak Cottage',
+            images: ['1.jpg', '2.jpg', '3.jpg', '4.jpeg']
         },
         'refuge': {
-            path: 'assets/gallery/rooms/Refuge Family Cottage',
-            total: 9,
-            jpegIndices: [] // All are .jpg
+            basePath: 'assets/gallery/rooms/Refuge Family Cottage',
+            images: Array.from({length: 9}, (_, i) => `${i + 1}.jpg`)
         },
         'treehouse': {
-            path: 'assets/gallery/rooms/Tree house',
-            total: 10,
-            jpegIndices: [8] // Only 8 is .jpeg, rest are .jpg
+            basePath: 'assets/gallery/rooms/Tree house',
+            images: Array.from({length: 10}, (_, i) => `${i + 1}.jpg`).map((name, i) => 
+                i === 7 ? '8.jpeg' : name
+            )
         },
         'walnut': {
-            path: 'assets/gallery/rooms/Walnut cottage',
-            total: 8,
-            jpegIndices: [1] // Only 1 is .jpeg, rest are .jpg
+            basePath: 'assets/gallery/rooms/Walnut cottage',
+            images: ['1.jpeg', ...Array.from({length: 7}, (_, i) => `${i + 2}.jpg`)]
         },
         'property': {
-            path: 'assets/gallery/rooms/Property',
-            total: 2,
-            jpegIndices: [] // All are .jpg
+            basePath: 'assets/gallery/rooms/Property',
+            images: Array.from({length: 5}, (_, i) => `${i + 1}.jpg`)
         }
     };
 
-    // Intersection Observer for lazy loading
-    const imageObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                if (img.dataset.src) {
-                    img.src = img.dataset.src;
-                    img.onload = () => img.classList.add('loaded');
-                    img.onerror = () => {
-                        console.error('Failed to load image:', img.dataset.src);
-                    };
-                }
-                imageObserver.unobserve(img);
-            }
+    // Create all gallery items
+    const fragment = document.createDocumentFragment();
+
+    Object.entries(cottages).forEach(([category, {basePath, images}]) => {
+        images.forEach(imageName => {
+            const item = document.createElement('div');
+            item.className = 'gallery-item';
+            item.dataset.category = category;
+            item.style.display = category === 'treehouse' ? 'block' : 'none'; // Show treehouse by default
+
+            const img = document.createElement('img');
+            img.src = `${basePath}/${imageName}`;
+            img.alt = `${category} view`;
+            img.loading = 'lazy';
+            img.decoding = 'async';
+            img.width = 300;  // Set fixed dimensions
+            img.height = 200;
+
+            // Add load event listener
+            img.onload = () => {
+                img.classList.add('loaded');
+                item.classList.add('loaded');
+            };
+            
+            item.appendChild(img);
+            fragment.appendChild(item);
         });
-    }, {
-        rootMargin: '50px 0px',
-        threshold: 0.1
     });
 
-    function createGalleryItem(imagePath, category) {
-        const item = document.createElement('div');
-        item.className = 'gallery-item';
-        item.dataset.category = category;
-
-        const img = document.createElement('img');
-        img.className = 'lazy';
-        img.dataset.src = imagePath;
-        img.alt = `${category} cottage view`;
-        img.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
-        
-        item.appendChild(img);
-        imageObserver.observe(img);
-        return item;
-    }
-
-    function loadCottageImages() {
-        let totalImagesLoaded = 0;
-        const fragment = document.createDocumentFragment();
-
-        for (const [category, info] of Object.entries(cottages)) {
-            for (let i = 1; i <= info.total; i++) {
-                const extension = info.jpegIndices.includes(i) ? '.jpeg' : '.jpg';
-                const imagePath = `${info.path}/${i}${extension}`;
-                const item = createGalleryItem(imagePath, category);
-                fragment.appendChild(item);
-                totalImagesLoaded++;
-            }
-        }
-
-        galleryGrid.appendChild(fragment);
-        loadingIndicator.remove();
-        console.log(`Total images loaded: ${totalImagesLoaded}`);
-    }
+    // Remove loading indicator and append all items
+    galleryGrid.appendChild(fragment);
+    loadingIndicator.remove();
 
     // Filter functionality
     const filterButtons = document.querySelectorAll('.filter-btn');
@@ -100,14 +77,28 @@ document.addEventListener('DOMContentLoaded', function() {
         btn.addEventListener('click', () => {
             const filter = btn.dataset.filter;
             
-            filterButtons.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
+            // Update active button
+            filterButtons.forEach(b => b.classList.remove('filter-btn-selected', 'active'));
+            btn.classList.add('filter-btn-selected', 'active');
 
+            // Filter items with animation
             document.querySelectorAll('.gallery-item').forEach(item => {
-                item.style.display = (filter === 'all' || item.dataset.category === filter) ? 'block' : 'none';
+                if (filter === item.dataset.category) {
+                    item.style.display = 'block';
+                    setTimeout(() => item.classList.add('visible'), 10);
+                } else {
+                    item.classList.remove('visible');
+                    setTimeout(() => item.style.display = 'none', 300);
+                }
             });
         });
     });
+
+    // Set initial active state
+    const defaultFilter = document.querySelector('.filter-btn[data-filter="treehouse"]');
+    if (defaultFilter) {
+        defaultFilter.classList.add('filter-btn-selected', 'active');
+    }
 
     // Lightbox functionality
     const lightbox = document.querySelector('.lightbox');
@@ -120,14 +111,17 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!item) return;
 
         const img = item.querySelector('img');
-        const imgSrc = img.dataset.src || img.src;
+        const imgSrc = img.src;
         
-        const filter = document.querySelector('.filter-btn.active').dataset.filter;
+        // Get current filter
+        const activeFilter = document.querySelector('.filter-btn.active')?.dataset.filter;
+        
+        // Get all visible images
         currentImages = Array.from(document.querySelectorAll('.gallery-item'))
-            .filter(i => filter === 'all' || i.dataset.category === filter)
-            .map(i => i.querySelector('img').dataset.src || i.querySelector('img').src);
+            .filter(i => i.dataset.category === activeFilter)
+            .map(i => i.querySelector('img').src);
+        
         currentImageIndex = currentImages.indexOf(imgSrc);
-
         lightboxImg.src = imgSrc;
         lightbox.classList.add('active');
     });
@@ -146,7 +140,4 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelector('.close-lightbox').addEventListener('click', () => {
         lightbox.classList.remove('active');
     });
-
-    // Initialize gallery
-    loadCottageImages();
 }); 

@@ -37,11 +37,10 @@
         
         <!-- Filter Buttons -->
         <div class="filter-container">
-            <button class="filter-btn active" data-filter="all">All</button>
             <button class="filter-btn" data-filter="mistletoe">Mistletoe Cottage</button>
             <button class="filter-btn" data-filter="oak">Oak Cottage</button>
             <button class="filter-btn" data-filter="refuge">Refuge Family Cottage</button>
-            <button class="filter-btn" data-filter="treehouse">Tree House</button>
+            <button class="filter-btn filter-btn-selected" data-filter="treehouse">Tree House</button>
             <button class="filter-btn" data-filter="walnut">Walnut Cottage</button>
             <button class="filter-btn" data-filter="property">Property Views</button>
         </div>
@@ -61,5 +60,168 @@
     </div>
 
     <script src="js/gallery.js" defer></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const galleryGrid = document.querySelector('.gallery-grid');
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = lightbox.querySelector('.lightbox-image');
+            let currentImages = [];
+            let currentImageIndex = 0;
+
+            // Image paths configuration
+            const imagePaths = {
+                'mistletoe': 'assets/gallery/Rooms/Mistletoe Cottage',
+                'oak': 'assets/gallery/Rooms/Oak Cottage',
+                'refuge': 'assets/gallery/Rooms/Refuge Family Cottage',
+                'treehouse': 'assets/gallery/Rooms/Tree house',
+                'walnut': 'assets/gallery/Rooms/Walnut cottage',
+                'property': 'assets/gallery/Rooms/Property'
+            };
+
+            // Function to create a loading spinner
+            function createLoadingSpinner() {
+                const spinner = document.createElement('div');
+                spinner.className = 'loading-spinner';
+                spinner.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+                return spinner;
+            }
+
+            // Function to load images for a category
+            async function loadImagesForCategory(category) {
+                const basePath = imagePaths[category];
+                try {
+                    // In production, you would fetch this list from your server
+                    // For now, we'll use a static list of image numbers
+                    const imageCount = 10; // Adjust based on actual number of images
+                    const images = [];
+                    
+                    for(let i = 1; i <= imageCount; i++) {
+                        const image = {
+                            path: `${basePath}/${i}.jpg`,
+                            alt: `${category.charAt(0).toUpperCase() + category.slice(1)} Image ${i}`
+                        };
+                        images.push(image);
+                    }
+                    
+                    return images;
+                } catch (error) {
+                    console.error('Error loading images:', error);
+                    return [];
+                }
+            }
+
+            // Function to create image element with lazy loading
+            function createImageElement(image) {
+                const imgContainer = document.createElement('div');
+                imgContainer.className = 'image-container';
+                
+                const img = document.createElement('img');
+                img.loading = 'lazy'; // Enable lazy loading
+                img.src = image.path;
+                img.alt = image.alt;
+                
+                // Add click event for lightbox
+                img.addEventListener('click', () => openLightbox(image));
+                
+                // Add error handling for images
+                img.onerror = function() {
+                    this.src = 'assets/placeholder.jpg'; // Add a placeholder image
+                    this.alt = 'Image not available';
+                };
+
+                imgContainer.appendChild(img);
+                return imgContainer;
+            }
+
+            // Function to open lightbox
+            function openLightbox(image) {
+                lightbox.style.display = 'flex';
+                lightboxImg.src = image.path;
+                lightboxImg.alt = image.alt;
+                currentImageIndex = currentImages.findIndex(img => img.path === image.path);
+                updateLightboxButtons();
+            }
+
+            // Function to update lightbox navigation buttons
+            function updateLightboxButtons() {
+                const prevBtn = lightbox.querySelector('.prev-btn');
+                const nextBtn = lightbox.querySelector('.next-btn');
+                
+                prevBtn.style.display = currentImageIndex > 0 ? 'block' : 'none';
+                nextBtn.style.display = currentImageIndex < currentImages.length - 1 ? 'block' : 'none';
+            }
+
+            // Function to filter images
+            async function filterImages(filter) {
+                // Clear the gallery grid
+                galleryGrid.innerHTML = '';
+                
+                // Add loading spinner
+                const spinner = createLoadingSpinner();
+                galleryGrid.appendChild(spinner);
+
+                try {
+                    // Load images for the selected filter
+                    currentImages = await loadImagesForCategory(filter);
+                    
+                    // Remove spinner
+                    spinner.remove();
+
+                    // Display images
+                    currentImages.forEach(image => {
+                        const imgElement = createImageElement(image);
+                        galleryGrid.appendChild(imgElement);
+                    });
+                } catch (error) {
+                    console.error('Error filtering images:', error);
+                    galleryGrid.innerHTML = '<p>Error loading images. Please try again later.</p>';
+                }
+            }
+
+            // Event listeners for filter buttons
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    filterButtons.forEach(btn => btn.classList.remove('filter-btn-selected'));
+                    this.classList.add('filter-btn-selected');
+                    filterImages(this.dataset.filter);
+                });
+            });
+
+            // Lightbox navigation
+            lightbox.querySelector('.prev-btn').addEventListener('click', () => {
+                if (currentImageIndex > 0) {
+                    currentImageIndex--;
+                    lightboxImg.src = currentImages[currentImageIndex].path;
+                    lightboxImg.alt = currentImages[currentImageIndex].alt;
+                    updateLightboxButtons();
+                }
+            });
+
+            lightbox.querySelector('.next-btn').addEventListener('click', () => {
+                if (currentImageIndex < currentImages.length - 1) {
+                    currentImageIndex++;
+                    lightboxImg.src = currentImages[currentImageIndex].path;
+                    lightboxImg.alt = currentImages[currentImageIndex].alt;
+                    updateLightboxButtons();
+                }
+            });
+
+            // Close lightbox
+            lightbox.querySelector('.close-lightbox').addEventListener('click', () => {
+                lightbox.style.display = 'none';
+            });
+
+            // Close lightbox with escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    lightbox.style.display = 'none';
+                }
+            });
+
+            // Load default images for "Tree House" on page load
+            filterImages('treehouse');
+        });
+    </script>
 </body>
 </html> 
