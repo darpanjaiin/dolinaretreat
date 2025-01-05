@@ -30,7 +30,7 @@
                 <i class="fab fa-instagram"></i>
                 <span>Follow Dolina Retreats</span>
             </a>
-            <img src="assets/heroimage.jpg" alt="Dolina Retreats" loading="eager">
+            <img src="assets/heroimage.webp" alt="Dolina Retreats" loading="eager">
         </div>
         <header>
             <h1>Dolina Retreats</h1>
@@ -84,28 +84,53 @@
 
         <section class="featured-sections">
             <div class="feature-card" id="amenities-card">
-                <img src="assets/amenities.jpeg" alt="Amenities">
+                <img src="assets/amenities.webp" 
+                     alt="Amenities" 
+                     width="130" 
+                     height="85"
+                     loading="lazy"
+                     decoding="async">
                 <div class="card-content">
                     <h2>Amenities</h2>
                     <p>Find what's inside</p>
                 </div>
             </div>
+            
             <div class="feature-card" id="host-favorites">
-                <img src="assets/food.jpg" alt="Food">
+                <img src="assets/food.webp" 
+                     alt="Food" 
+                     width="130" 
+                     height="85"
+                     loading="lazy"
+                     decoding="async">
                 <div class="card-content">
                     <h2>Food</h2>
                     <p>Dine and unwind</p>
                 </div>
             </div>
-            <div class="feature-card" id="gallery-card">
-                <img src="assets/gallery.jpg" alt="Property Gallery">
+            
+            <div class="feature-card">
+                <img src="assets/gallery.webp" 
+                     alt="Property Gallery" 
+                     width="130" 
+                     height="85"
+                     loading="lazy"
+                     decoding="async">
                 <div class="card-content">
-                    <h2>Gallery</h2>
-                    <p>View property images</p>
+                    <a href="gallery.html" class="gallery-link">
+                        <h2>Gallery</h2>
+                        <p>View property images</p>
+                    </a>
                 </div>
             </div>
+            
             <div class="feature-card" id="rooms-card">
-                <img src="assets/featured-room.jpeg" alt="Our Rooms">
+                <img src="assets/rooms.webp" 
+                     alt="Our Rooms" 
+                     width="130" 
+                     height="85"
+                     loading="lazy"
+                     decoding="async">
                 <div class="card-content">
                     <h2>Rooms</h2>
                     <p>Your mountain retreat</p>
@@ -826,6 +851,65 @@
                             <i class="fas fa-pump-soap"></i>
                             <span>Toiletries</span>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="rooms-modal" class="modal">
+        <div class="modal-content modal-large">
+            <span class="close">&times;</span>
+            <h2>Our Cottages</h2>
+            
+            <div class="rooms-grid">
+                <!-- Mistletoe Cottage -->
+                <div class="room-card">
+                    <div class="room-image">
+                        <img src="assets/gallery/rooms/Mistletoe Cottage/1.jpeg" alt="Mistletoe Cottage" loading="lazy">
+                    </div>
+                    <div class="room-info">
+                        <h3>Mistletoe Cottage</h3>
+                    </div>
+                </div>
+
+                <!-- Oak Cottage -->
+                <div class="room-card">
+                    <div class="room-image">
+                        <img src="assets/gallery/rooms/Oak Cottage/1.jpg" alt="Oak Cottage" loading="lazy">
+                    </div>
+                    <div class="room-info">
+                        <h3>Oak Cottage</h3>
+                    </div>
+                </div>
+
+                <!-- Refuge Family Cottage -->
+                <div class="room-card">
+                    <div class="room-image">
+                        <img src="assets/gallery/rooms/Refuge Family Cottage/1.jpg" alt="Refuge Family Cottage" loading="lazy">
+                    </div>
+                    <div class="room-info">
+                        <h3>Refuge Family Cottage</h3>
+                    </div>
+                </div>
+
+                <!-- Tree House -->
+                <div class="room-card">
+                    <div class="room-image">
+                        <img src="assets/gallery/rooms/Tree house/7.jpg" alt="Tree House" loading="lazy">
+                    </div>
+                    <div class="room-info">
+                        <h3>Tree House</h3>
+                    </div>
+                </div>
+
+                <!-- Walnut Cottage -->
+                <div class="room-card">
+                    <div class="room-image">
+                        <img src="assets/gallery/rooms/Walnut cottage/1.jpeg" alt="Walnut Cottage" loading="lazy">
+                    </div>
+                    <div class="room-info">
+                        <h3>Walnut Cottage</h3>
                     </div>
                 </div>
             </div>

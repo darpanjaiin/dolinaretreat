@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dolina Retreats - Gallery</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Explore our beautiful mountain retreat through our photo gallery">
+    <meta property="og:title" content="Dolina Retreats - Gallery">
+    <meta property="og:description" content="View our stunning property photos">
+    <meta property="og:image" content="assets/favicon.jpg">
+    
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="css/gallery.css" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/gallery.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="assets/favicon.jpg" type="image/jpeg">
+    <link rel="apple-touch-icon" href="assets/favicon.jpg">
+</head>
+<body>
+    <!-- Back Button -->
+    <a href="index.html" class="back-button">
+        <i class="fas fa-arrow-left"></i>
+        <span>Back to Home</span>
+    </a>
+
+    <div class="gallery-container">
+        <h1>Our Property Gallery</h1>
+        
+        <!-- Filter Buttons -->
+        <div class="filter-container">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="mistletoe">Mistletoe Cottage</button>
+            <button class="filter-btn" data-filter="oak">Oak Cottage</button>
+            <button class="filter-btn" data-filter="refuge">Refuge Family Cottage</button>
+            <button class="filter-btn" data-filter="treehouse">Tree House</button>
+            <button class="filter-btn" data-filter="walnut">Walnut Cottage</button>
+            <button class="filter-btn" data-filter="property">Property Views</button>
+        </div>
+
+        <!-- Gallery Grid -->
+        <div class="gallery-grid">
+            <!-- Images will be loaded here dynamically -->
+        </div>
+
+        <!-- Lightbox -->
+        <div class="lightbox" id="lightbox">
+            <span class="close-lightbox">&times;</span>
+            <img src="" alt="" class="lightbox-image">
+            <button class="prev-btn"><i class="fas fa-chevron-left"></i></button>
+            <button class="next-btn"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </div>
+
+    <script src="js/gallery.js" defer></script>
+</body>
+</html> 
